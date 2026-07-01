@@ -21,25 +21,30 @@ When(`eu adiciono um livro com os dados obrigatórios`, () => {
 });
 
 Then(`deve aparecer uma mensagem: {string}`, (mensagem) => {
-    // [Then] Describes the expected outcome or result of the scenario.
+    cy.get('#alert-container').should('contain', mensagem)
 });
 
 Given(`existe um livro listado no catálogo`, () => {
-    // [Given] Sets up the initial state of the system.
+    cy.get('#search-input').type('Livro para deletar')
+    cy.wait(2000)
 });
 
 When(`eu eudito os detalhes do livro`, () => {
-    // [When] Describes the action or event that triggers the scenario.
+    cy.get(':nth-child(7) > .btn-outline-primary').click()
+    cy.wait(1000)
+    cy.get('#book-category').select('Aventura')
+    cy.get('#save-book-btn').click()
 });
 
 Then(`deve aparecer uma mensagem de atualização: {string}`, (mensagem) => {
-    // [Then] Describes the expected outcome or result of the scenario.
+    cy.get('#alert-container').should('contain', mensagem)
 });
 
 When(`eu removo o livro do catálogo`, () => {
-    // [When] Describes the action or event that triggers the scenario.
+    cy.get(':nth-child(7) > .btn-outline-danger').click()
+    cy.get('#confirm-delete-btn').click()
 });
 
 Then(`deve aparecer uma mensagem de exclusão: {string}`, (mensagem) => {
-    // [Then] Describes the expected outcome or result of the scenario.
+    cy.get('#alert-container').should('contain', mensagem)
 });
