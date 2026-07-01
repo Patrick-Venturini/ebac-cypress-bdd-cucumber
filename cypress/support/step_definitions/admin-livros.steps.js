@@ -11,7 +11,13 @@ Given(`que eu estou na página de administrador de livros`, () => {
 });
 
 When(`eu adiciono um livro com os dados obrigatórios`, () => {
-    // [When] Describes the action or event that triggers the scenario.
+    cy.get('.btn-success').click()
+    cy.get('#book-title').type('Livro teste')
+    cy.get('#book-author').type('Autor teste', { force: true })
+    cy.get('#book-category').select('Infantil')
+    cy.get('#book-copies').type(2)
+    cy.get('#save-book-btn').click()
+    cy.wait(3000)
 });
 
 Then(`deve aparecer uma mensagem: {string}`, (mensagem) => {
