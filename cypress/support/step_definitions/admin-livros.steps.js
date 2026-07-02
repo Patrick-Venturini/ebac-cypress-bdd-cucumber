@@ -42,3 +42,14 @@ When(`eu removo o livro do catálogo`, () => {
 Then(`deve aparecer uma mensagem de exclusão: {string}`, (mensagem) => {
     cy.get('#alert-container').should('contain', mensagem)
 });
+
+When("eu adiciono novos livros com os seguintes dados:", (dataTable) => {
+    const books = dataTable.hashes()
+    books.forEach(book => {
+        cy.adicionarLivro(book.titulo, book.autor, book.categoria, book.exemplares)
+    })
+});
+
+When(`eu adiciono um livro com {string}, {string}, {string} e {string}`, (titulo, autor, categoria, exemplares) => {
+    cy.adicionarLivro(titulo, autor, categoria, exemplares)
+});
