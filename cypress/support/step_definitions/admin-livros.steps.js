@@ -1,23 +1,16 @@
 import { Given, When, Then, DataTable } from '@badeball/cypress-cucumber-preprocessor';
 
+beforeEach(() => {
+    cy.login('admin@biblioteca.com', 'admin123')
+});
+
 Given(`que eu estou na página de administrador de livros`, () => {
-    cy.visit('http://localhost:3000/login.html')
-    cy.get('#email').type('admin@biblioteca.com')
-    cy.get('#password').type('admin123')
-    cy.get('#login-btn').click()
-    cy.wait(1000)
-    cy.visit('http://localhost:3000/admin-books.html')
-    cy.wait(3000)
+    cy.visit('/admin-books.html')
+    cy.get('h1').should('contain', 'Gerenciar Livros')
 });
 
 When(`eu adiciono um livro com os dados obrigatórios`, () => {
-    cy.get('.btn-success').click()
-    cy.get('#book-title').type('Livro teste')
-    cy.get('#book-author').type('Autor teste', { force: true })
-    cy.get('#book-category').select('Infantil')
-    cy.get('#book-copies').type(2)
-    cy.get('#save-book-btn').click()
-    cy.wait(3000)
+    cy.adicionarLivro('Livro teste', 'Autor Teste', 'Aventura', 2)
 });
 
 Then(`deve aparecer uma mensagem: {string}`, (mensagem) => {
@@ -25,7 +18,8 @@ Then(`deve aparecer uma mensagem: {string}`, (mensagem) => {
 });
 
 Given(`existe um livro listado no catálogo`, () => {
-    cy.get('#search-input').type('Livro para deletar')
+    cy.adicionarLivro('Livro para manipular', 'Autor Teste', 'Aventura', 2)
+    cy.get('#search-input').type('Livro para manipular')
     cy.wait(2000)
 });
 
