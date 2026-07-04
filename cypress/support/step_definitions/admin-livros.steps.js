@@ -1,8 +1,8 @@
-import { Given, When, Then, DataTable } from '@badeball/cypress-cucumber-preprocessor';
+import { Given, When, Then, DataTable, Before } from '@badeball/cypress-cucumber-preprocessor';
 
-beforeEach(() => {
-    cy.login('admin@biblioteca.com', 'admin123')
-});
+Before({ tags: '@admin' }, () => {
+    cy.login('admin@biblioteca.com', 'admin123', 'h1', 'Painel Administrativo')
+})
 
 Given(`que eu estou na página de administrador de livros`, () => {
     cy.visit('/admin-books.html')

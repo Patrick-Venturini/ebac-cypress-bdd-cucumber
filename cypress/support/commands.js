@@ -10,12 +10,15 @@
 //
 //
 // -- This is a parent command --
-Cypress.Commands.add('login', (email, senha) => {
+Cypress.Commands.add('login', (email, senha, selector, userName) => {
     cy.visit('/login.html')
     cy.get('#email').type(email)
     cy.get('#password').type(senha)
     cy.get('#login-btn').click()
-    cy.get('h1').should('contain', 'Painel Administrativo')
+
+    if (selector && userName) {
+        cy.get(selector).should('contain', userName)
+    }
 })
 //
 //
