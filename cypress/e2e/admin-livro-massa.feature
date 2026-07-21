@@ -1,5 +1,5 @@
             # language: pt
-
+            @admin
             Funcionalidade: Administração de livros no Hub de Leitura
             Como administrador do sistema
             Quero adicionar, editar e remover múltiplos livros de uma só vez
@@ -16,7 +16,7 @@
             | Livro de teste 5 | Autor teste 1 | Infantil  | 2          |
             | Livro de teste 6 | Autor teste 1 | Aventura  | 2          |
             Então deve aparecer uma mensagem: "Livro adicionado com sucesso!"
-            @only
+
             Esquema do Cenário: Adicionar livros usando esquema do cenário - Livro: "<titulo>"
             Dado que eu estou na página de administrador de livros
             Quando eu adiciono um livro com "<titulo>", "<autor>", "<categoria>" e "<exemplares>"
