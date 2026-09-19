@@ -4,7 +4,9 @@
   "description": "Exemplo de modelo com cypress e cucumber",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress run"
+    "test": "npx cypress run",
+    "report": "npx allure serve --clean allure-results",
+    "report:generate": "npx allure generate --clean allure-results --output allure-report"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +15,11 @@
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^23.2.0",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.6",
+    "allure-cypress": "^3.12.2",
     "cypress": "^14.5.4",
     "esbuild": "^0.25.10"
+  },
+  "dependencies": {
+    "allure-commandline": "^2.46.1"
   }
 }
