@@ -10,7 +10,7 @@ Given(`que eu estou na página de administrador de livros`, () => {
 });
 
 When(`eu adiciono um livro com os dados obrigatórios`, () => {
-    cy.adicionarLivro('Livro teste', 'Autor Teste', 'Aventura', 2)
+    cy.adicionarLivro('Livro teste', 'Aventura', 2)
 });
 
 Then(`deve aparecer uma mensagem: {string}`, (mensagem) => {

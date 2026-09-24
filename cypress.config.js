@@ -21,7 +21,7 @@ module.exports = defineConfig({
     },
     baseUrl: "http://localhost:3000",
     // projectId: "ufpqxq",
-    // screenshotOnRunFailure: true,
+    screenshotOnRunFailure: true,
     video: true,
   },
 })
